@@ -20,15 +20,15 @@ import React, { useState, useEffect } from "react";
 //   }
 // }
 function App(props) {
-  const [name, setName] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   // const [isLoading, setIsLoading] = useState('');
   // return <div>{isLoading ? "Loading..." : "We are ready"}</div>;
 
   setTimeout(() => {
-    setName("abc");
+    // setIsLoading(false);
   }, 2000);
 
-  return <div>{`hello, my name is ${name}`}</div>;
+  return <div>{`hello, my name is`}</div>;
 }
 
 export default App;
