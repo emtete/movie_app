@@ -25,10 +25,10 @@ function App(props) {
   // return <div>{isLoading ? "Loading..." : "We are ready"}</div>;
 
   setTimeout(() => {
-    // setIsLoading(false);
-  }, 2000);
+    setIsLoading(false);
+  }, 6000);
 
-  return <div>{`hello, my name is`}</div>;
+  return <div className='load'>{`${isLoading}`}</div>;
 }
 
 export default App;

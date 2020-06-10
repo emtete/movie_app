@@ -1,14 +1,19 @@
+("use strict");
 // import sinon from "sinon";
 import React, { useState, useEffect } from "react";
 import { shallow, mount } from "enzyme";
 import App from "../App";
 
-it("Check state when setTimeout(before, after)", () => {
+jest.setTimeout(30000);
+
+it("Check state when setTimeout(before, after)", (dummy) => {
   const wrapper = shallow(<App />);
-  // const wrapper = shallow.find("App");
-  // expect(wrapper.state().isLoading).toEqual(true);
-  // setTimeout(() => {
-  //   expect(wrapper.state().isLoading).toEqual(false);
-  // }, 6000);
-  // expect(wrapper.state().name).toEqual("");
+
+  expect(wrapper.find(".load").text()).toEqual("true");
+  setTimeout(() => {
+    expect(wrapper.find(".load").text()).toEqual("false");
+    dummy();
+  }, 7000);
 });
+
+function dummy() {}
