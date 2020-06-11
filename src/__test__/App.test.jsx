@@ -9,9 +9,9 @@ jest.setTimeout(30000);
 it("Check state when setTimeout(before, after)", (dummy) => {
   const wrapper = shallow(<App />);
 
-  expect(wrapper.find(".load").text()).toEqual("true");
+  expect(wrapper.state().isLoading).toEqual(true);
   setTimeout(() => {
-    expect(wrapper.find(".load").text()).toEqual("false");
+    expect(wrapper.state().isLoading).toEqual(false);
     dummy();
   }, 7000);
 });
