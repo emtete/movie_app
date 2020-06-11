@@ -46,11 +46,12 @@ describe("Check ComponentDidMount", () => {
     wrapper = shallow(<App />);
   });
 
-  it("should check `componentDidMount()`", () => {
+  it("should check `componentDidMount()`", async () => {
     const instance = wrapper.instance(); // you assign your instance of the wrapper
     jest.spyOn(instance, "getMovies"); // You spy on the randomFunction
     instance.componentDidMount();
-    expect(instance.getMovies).toHaveBeenCalledTimes(1); // You check if the condition you want to match is correct.
-    console.log(instance.state.isLoading);
+    await instance.getMovies();
+    expect(instance.getMovies).toHaveBeenCalledTimes(2); // You check if the condition you want to match is correct.
+    expect(instance.state.isLoading).toEqual(false);
   });
 });
