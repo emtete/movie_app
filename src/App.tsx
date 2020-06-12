@@ -3,8 +3,8 @@ import axios from "axios";
 import Movie from "./Movie";
 
 interface State {
-  isLoading?: boolean;
-  movies?: Array<MovieData>;
+  isLoading: boolean; // isLoading? 으로 수정시 문제 해결됨.
+  movies: Array<MovieData>; // movies? 으로 수정시 문제 해결됨.
 }
 
 interface Props {}
