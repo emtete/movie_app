@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Movie from "./Movie";
+import styled from "styled-components";
 
 interface State {
   isLoading?: boolean;
