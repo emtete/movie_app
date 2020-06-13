@@ -1,12 +1,20 @@
 ("use strict");
 // import sinon from "sinon";
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { shallow, mount, ShallowWrapper } from "enzyme";
 import App from "../App";
 import axios from "axios";
 
+interface MovieData {
+  title: string;
+  id: number;
+  year: number;
+  summary: string;
+  medium_cover_image: string;
+}
+
 describe("Check getMovie", () => {
-  let movies = [];
+  let movies: Array<MovieData>;
 
   beforeEach(async () => {
     const result = await axios.get("https://yts.mx/api/v2/list_movies.json");
@@ -19,14 +27,14 @@ describe("Check getMovie", () => {
 });
 
 describe("Check ComponentDidMount", () => {
-  let wrapper;
+  let wrapper: ShallowWrapper;
 
   beforeEach(() => {
     wrapper = shallow(<App />);
   });
 
   it("componentDidMount", async () => {
-    const instance = wrapper.instance();
+    const instance: any = wrapper.instance();
     jest.spyOn(instance, "getMovies");
     instance.componentDidMount();
     await instance.getMovies();
