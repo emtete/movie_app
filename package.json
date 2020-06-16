@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
-    "flow-bin": "^0.127.0"
+    "flow-bin": "^0.127.0",
+    "flow-remove-types": "^2.127.0"
   }
 }
