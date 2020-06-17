@@ -27,17 +27,17 @@ class App extends React.Component<Props, iState> {
     };
   }
 
-  getMovies = async () => {
-    const {
-      data: {
-        data: { movies },
-      },
-    } = await axios.get("https://yts.mx/api/v2/list_movies.json");
-
+  getMovies = () => {
     new Promise(() => {
       axios
         .get("https://yts.mx/api/v2/list_movies.json")
         .then((resp: AxiosResponse) => {
+          const {
+            data: {
+              data: { movies },
+            },
+          } = resp;
+
           this.setState({ movies, isLoading: false });
         })
         .catch(() => {
