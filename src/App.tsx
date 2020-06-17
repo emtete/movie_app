@@ -1,11 +1,11 @@
 import React from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import Movie from "./Movie";
 import styled from "styled-components";
 
-interface State {
-  isLoading?: boolean;
-  movies?: Array<MovieData>;
+interface iState {
+  isLoading: boolean;
+  movies: Array<MovieData>;
 }
 
 interface Props {}
@@ -18,11 +18,14 @@ interface MovieData {
   medium_cover_image: string;
 }
 
-class App extends React.Component<State, Props> {
-  state = {
-    isLoading: true,
-    movies: [],
-  };
+class App extends React.Component<Props, iState> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+      movies: [],
+    };
+  }
 
   getMovies = async () => {
     const {
@@ -30,7 +33,17 @@ class App extends React.Component<State, Props> {
         data: { movies },
       },
     } = await axios.get("https://yts.mx/api/v2/list_movies.json");
-    this.setState({ movies, isLoading: false });
+
+    new Promise(() => {
+      axios
+        .get("https://yts.mx/api/v2/list_movies.json")
+        .then((resp: AxiosResponse) => {
+          this.setState({ movies, isLoading: false });
+        })
+        .catch(() => {
+          this.setState({ isLoading: true });
+        });
+    });
   };
 
   componentDidMount() {
