@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 interface MovieData {
   title: string;
@@ -21,13 +20,5 @@ function Movie({ title, id, year, summary, medium_cover_image }: MovieData) {
     </div>
   );
 }
-
-Movie.propTypes = {
-  id: PropTypes.number.isRequired,
-  year: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
-  medium_cover_image: PropTypes.string.isRequired,
-};
 
 export default Movie;
