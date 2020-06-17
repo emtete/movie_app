@@ -1,7 +1,9 @@
 import React from "react";
 import axios, { AxiosResponse } from "axios";
 import Movie from "./Movie";
-import styled from "styled-components";
+import style from "./style/App.module.css";
+
+require("./style/App.css");
 
 interface iState {
   isLoading: boolean;
@@ -54,13 +56,13 @@ class App extends React.Component<Props, iState> {
   render() {
     const { isLoading, movies } = this.state;
     return (
-      <div className='container'>
+      <section className={`${style.container}`}>
         {isLoading ? (
           <div className='loader'>
             <span className='loader__text'>loading...</span>
           </div>
         ) : (
-          <div className='movies'>
+          <div className={`${style.movies}`}>
             {movies.map((movie: MovieData) => {
               return (
                 <Movie
@@ -75,7 +77,7 @@ class App extends React.Component<Props, iState> {
             })}
           </div>
         )}
-      </div>
+      </section>
     );
   }
 }
