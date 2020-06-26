@@ -12,12 +12,7 @@ interface MovieData {
 function Movie({ title, id, year, summary, medium_cover_image }: MovieData) {
   return (
     <div className={`${style.movie}`}>
-      <img
-        className={`${style.poster}`}
-        src={medium_cover_image}
-        alt={title}
-        title={title}
-      ></img>
+      <img className={`${style.poster}`} src={medium_cover_image} alt={title} title={title}></img>
       <div className='movie__data'>
         <h3 className='movie__title'>{title}</h3>
         <h5 className='movie__year'>{year}</h5>
